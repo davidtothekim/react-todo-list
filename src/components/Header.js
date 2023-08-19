@@ -1,9 +1,15 @@
 import { useState } from 'react';
 
-const Header = (props) => {
+const Header = ({ clickHandler, title }) => {
 	/** PART 1 : Add Click event*/
-	function submitHandler() {
-		props.clickHandler(input);
+	// function submitHandler() {
+	// 	clickHandler(input);
+	// 	setInput(' ');
+	// }
+
+	async function submitHandler() {
+		await clickHandler(input);
+		setInput(' ');
 	}
 
 	/** PART 2 : Store the input Text in state*/
@@ -11,8 +17,14 @@ const Header = (props) => {
 
 	return (
 		<header className="header">
-			<h2 style={{ margin: '5px' }}>{props.title}</h2>
-			<input type="text" id="myInput" placeholder="Title..." onChange={(e) => setInput(e.target.value)} />
+			<h2 style={{ margin: '5px' }}>{title}</h2>
+			<input
+				type="text"
+				id="myInput"
+				placeholder="Title..."
+				onChange={(e) => setInput(e.target.value)}
+				value={input}
+			/>
 			<span className="addBtn" onClick={submitHandler}>
 				Add
 			</span>

@@ -16,8 +16,12 @@ function App() {
   const [items, setItems] = useState(listItems);
 
   const clickHandler = (item) => {
-    setItems([...items, item]);
+    addItem(item)
   };
+
+  const addItem = (item) => {
+    setItems([...items, item]);
+  }
 
   const deleteItem = (item) => {
     setItems(items.filter((listItem) => item !== listItem ))
