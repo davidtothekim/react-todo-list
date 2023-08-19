@@ -16,15 +16,21 @@ function App() {
   const [items, setItems] = useState(listItems);
 
   const clickHandler = (item) => {
+    setItems([...items, item]);
   };
+
+  const deleteItem = (item) => {
+    setItems(items.filter((listItem) => item !== listItem ))
+  }
 
   return (
     <>
       {/** PART 2: Pass clickHandler to the Header */}
-      <Header title="My Notes" />
-      <List items={items} />
+      <Header title="My Notes" clickHandler={clickHandler}/>
+      <List items={items} deleteItem = {deleteItem}/>
     </>
   );
+
 }
 
 export default App;
